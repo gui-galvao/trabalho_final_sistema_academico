@@ -1,0 +1,109 @@
+@import "tailwindcss";
+@import "@fontsource/barlow/600.css";
+@import "@fontsource/poppins/300.css";
+@import "@fontsource/poppins/500.css";
+
+/* CORES E FONTES*/
+
+@theme {
+  --font-titulo: "Barlow", sans-serif;
+  --font-texto: "Poppins", sans-serif;
+
+  --color-fundo: #f6f7f8;
+  --color-papel: #ffffff;
+  --color-tinta: #1f2a33;
+  --color-tinta-suave: #5d6a75;
+  --color-linha: #dde2e6;
+
+  --color-principal: #4f7a94;
+  --color-principal-escuro: #43687f;
+  --color-principal-claro: #e9f0f4;
+
+  --color-ocre: #8c6d35;
+  --color-ocre-claro: #f4eedf;
+
+  --color-perigo: #a5555a;
+  --color-perigo-claro: #f7eaea;
+
+  --color-sucesso: #4c7a5e;
+  --color-sucesso-claro: #e8f0ea;
+}
+
+@layer base {
+  body {
+    @apply bg-fundo font-texto font-light text-tinta;
+  }
+  h1, h2, h3 {
+    @apply font-titulo font-semibold;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-principal);
+    outline-offset: 2px;
+  }
+}
+
+
+/* COMPONENTES REUTILIZÁVEIS */
+@layer components {
+  /* Botões */
+  .botao {
+    @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-md border px-4 py-2 text-sm font-medium transition-colors;
+  }
+  .botao-pequeno {
+    @apply px-3 py-1.5 text-[13px];
+  }
+  .botao-principal {
+    @apply border-principal bg-principal text-white hover:bg-principal-escuro;
+  }
+  .botao-simples {
+    @apply border-linha bg-papel text-tinta hover:bg-fundo;
+  }
+  .botao-editar {
+    @apply border-ocre/40 text-ocre hover:bg-ocre-claro;
+  }
+  .botao-notas {
+    @apply border-principal/40 text-principal-escuro hover:bg-principal-claro;
+  }
+  .botao-excluir {
+    @apply border-perigo/40 text-perigo hover:bg-perigo-claro;
+  }
+
+
+
+  /* Formulário */
+  .rotulo {
+    @apply mb-1.5 block text-sm font-medium;
+  }
+  .campo {
+    @apply w-full rounded-md border border-linha bg-papel px-3 py-2.5 text-[15px] read-only:bg-fundo read-only:text-tinta-suave;
+  }
+
+
+
+  /* Tabela */
+  .tabela {
+    @apply w-full text-left text-sm;
+  }
+  .tabela th {
+    @apply whitespace-nowrap border-b border-linha py-3 pr-3 sm:pr-6 font-medium text-tinta-suave;
+  }
+  .tabela td {
+    @apply border-b border-linha py-3.5 pr-3 sm:pr-6;
+  }
+
+
+  
+  /* Etiquetas de situação */
+  .etiqueta {
+    @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium;
+  }
+  .etiqueta-sucesso {
+    @apply bg-sucesso-claro text-sucesso;
+  }
+  .etiqueta-perigo {
+    @apply bg-perigo-claro text-perigo;
+  }
+  .etiqueta-neutra {
+    @apply bg-fundo text-tinta-suave ring-1 ring-linha;
+  }
+}
